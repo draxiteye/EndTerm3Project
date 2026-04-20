@@ -1,0 +1,179 @@
+/* ============================================
+   FAKESERVERS — DESIGN SYSTEM
+   Dark cyber command-center aesthetic
+   ============================================ */
+
+/* ── CSS Custom Properties ── */
+:root {
+  /* Background layers */
+  --bg-deep: #04060b;
+  --bg-base: #06080f;
+  --bg-surface: #0c1018;
+  --bg-card: #0f1420;
+  --bg-card-hover: #141a28;
+  --bg-elevated: #1a2030;
+
+  /* Border colors */
+  --border-dim: #162747;
+  --border-base: #1e2740;
+  --border-bright: #2a3654;
+
+  /* Text colors */
+  --text-primary: #e8ecf4;
+  --text-secondary: #8892a6;
+  --text-muted: #4e5768;
+  --text-dim: #333d4f;
+
+  /* Status colors */
+  --status-healthy: #00e676;
+  --status-healthy-dim: rgba(0, 230, 118, 0.15);
+  --status-healthy-glow: rgba(0, 230, 118, 0.3);
+
+  --status-warning: #ffab00;
+  --status-warning-dim: rgba(255, 171, 0, 0.15);
+  --status-warning-glow: rgba(255, 171, 0, 0.3);
+
+  --status-critical: #ff1744;
+  --status-critical-dim: rgba(255, 23, 68, 0.15);
+  --status-critical-glow: rgba(255, 23, 68, 0.4);
+
+  --status-dead: #5c1a2a;
+  --status-dead-dim: rgba(92, 26, 42, 0.3);
+
+  /* Accent colors */
+  --accent-cyan: #00e5ff;
+  --accent-purple: #b388ff;
+  --accent-blue: #448aff;
+
+  /* Chart colors */
+  --chart-cpu: #ff1744;
+  --chart-memory: #00e5ff;
+  --chart-network: #76ff03;
+  --chart-error: #ff9100;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* Sizing */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.5);
+  --shadow-glow-green: 0 0 15px rgba(0, 230, 118, 0.2), 0 0 3px rgba(0, 230, 118, 0.1);
+  --shadow-glow-red: 0 0 20px rgba(255, 23, 68, 0.3), 0 0 5px rgba(255, 23, 68, 0.2);
+  --shadow-glow-amber: 0 0 15px rgba(255, 171, 0, 0.2), 0 0 3px rgba(255, 171, 0, 0.1);
+}
+
+/* ── Keyframe Animations ── */
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 230, 118, 0.1); }
+  50% { box-shadow: 0 0 18px rgba(0, 230, 118, 0.25), 0 0 4px rgba(0, 230, 118, 0.15); }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 23, 68, 0.2); border-color: rgba(255, 23, 68, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(255, 23, 68, 0.5), 0 0 8px rgba(255, 23, 68, 0.3); border-color: rgba(255, 23, 68, 0.9); }
+}
+
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 171, 0, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(255, 171, 0, 0.2), 0 0 4px rgba(255, 171, 0, 0.1); }
+}
+
+@keyframes flatline {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes glow-rotate {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Global Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 229, 255, 0.2);
+  color: var(--text-primary);
+}
