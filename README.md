@@ -1,20 +1,28 @@
-<<<<<<< HEAD
-# React + Vite
+# End-Term Project - Real-time Server Observability Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Tech Stack
+- Frontend: React (Vite)
+- Backend: Go (Gorilla WebSocket)
+- Deployment: Vercel + Render
 
-Currently, two official plugins are available:
+## 🌐 Live Links
+- Frontend: https://your-vercel-link.vercel.app
+- Backend: https://endterm3project.onrender.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ⚙ Features
+- Real-time WebSocket server monitoring
+- 100-node simulation engine
+- CPU / Memory / Latency tracking
+- Chaos injection system
+- Live logs dashboard
 
-## React Compiler
+## 🧠 Architecture
+Frontend (Vercel) ↔ WebSocket ↔ Backend (Render Go server)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ▶ Run Locally
+### Backend
+go run metrics.go
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# EndTerm3Project
->>>>>>> 35e54e5b415cb37f11078d99989b825b0f3300e6
+### Frontend
+npm install
+npm run dev
